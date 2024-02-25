@@ -27,6 +27,7 @@
         }else{            
             $login_message = "Gagal Login";
         }
+        $db->close();
     }
     
 

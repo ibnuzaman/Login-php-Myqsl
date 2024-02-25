@@ -26,7 +26,7 @@
         } catch (\Throwable $th) {
             $register_message = "username sudah digunakan";
         }
-        
+        $db->close();
         
     }
 
