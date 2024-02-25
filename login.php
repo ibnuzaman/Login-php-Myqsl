@@ -2,7 +2,7 @@
 
     include "service/database.php";
 
-
+    $login_message = "";
 
     if (isset($_POST['login'])) {
         $username = ($_POST['username']);
@@ -13,11 +13,12 @@
 
         if ($result->num_rows > 0) {
             $data = $result->fetch_assoc();
-            echo "Username " . $data['username']; 
-            echo "Password " . $data['password'];
-
-        }else{
-            echo "Tidak menemukan data!";
+            // echo "Username " . $data['username']; 
+            // echo "Password " . $data['password'];
+            header ("Location:dashboard.php");
+            
+        }else{            
+            $login_message = "Gagal Login";
         }
     }
     
@@ -40,6 +41,8 @@
     <h3>
         LOGIN
 </h3>
+
+    <i><?= $login_message ?></i>
 
     <form action="login.php" method="POST">   
         

@@ -2,6 +2,8 @@
 
     include "service/database.php";
 
+    $register_message ="";
+
     if (isset($_POST["register"])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
@@ -9,10 +11,11 @@
         $sql = "INSERT INTO users (username,password) VALUES ('$username','$password')";
     
         if ($db->query($sql)) {
-            echo "masuk";        
+            // echo "masuk";        
+            $register_message = "Berhasil Mendaftar";
         }else{
 
-            echo "Error: " . $sql . "<br>" . $db->error;
+            $register_message = "Gagal Mendaftar";
         }
     }
 
@@ -32,6 +35,8 @@
     <h3>
         DAFTAR AKUN
 </h3>
+
+    <i><?= $register_message ?></i>
 
     <form action="register.php" method="POST">   
         
