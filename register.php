@@ -12,8 +12,9 @@
     if (isset($_POST["register"])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        
-        $sql = "INSERT INTO users (username,password) VALUES ('$username','$password')";
+
+        try {
+            $sql = "INSERT INTO users (username,password) VALUES ('$username','$password')";
     
         if ($db->query($sql)) {
             // echo "masuk";        
@@ -22,6 +23,11 @@
 
             $register_message = "Gagal Mendaftar";
         }
+        } catch (\Throwable $th) {
+            $register_message = "username sudah digunakan";
+        }
+        
+        
     }
 
 
