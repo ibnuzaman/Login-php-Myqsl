@@ -1,6 +1,7 @@
 <?php 
 
     include "service/database.php";
+    session_start();
 
     $login_message = "";
 
@@ -13,6 +14,8 @@
 
         if ($result->num_rows > 0) {
             $data = $result->fetch_assoc();
+            $_SESSION['username'] = $data['username'];
+            $_SESSION['is_Login'] = true;
             // echo "Username " . $data['username']; 
             // echo "Password " . $data['password'];
             header ("Location:dashboard.php");

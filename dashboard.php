@@ -1,3 +1,9 @@
+<?php 
+
+    session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +12,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>SELAMAT DATANG KEMBALI
+    <h1>SELAMAT DATANG KEMBALI <?= $_SESSION['username']  ?>
         
     <?php 
         // include "layout/header.html";
