@@ -12,9 +12,10 @@
     if (isset($_POST["register"])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $hash_password = hash("sha256",$password);
 
         try {
-            $sql = "INSERT INTO users (username,password) VALUES ('$username','$password')";
+            $sql = "INSERT INTO users (username,password) VALUES ('$username','$hash_password')";
     
         if ($db->query($sql)) {
             // echo "masuk";        
