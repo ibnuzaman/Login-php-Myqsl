@@ -1,8 +1,13 @@
 <?php 
 
     include "service/database.php";
+    session_start();
 
     $register_message ="";
+
+    if (isset($_SESSION['is_login'])) {
+        header("Location: dashboard.php");
+    }
 
     if (isset($_POST["register"])) {
         $username = $_POST['username'];

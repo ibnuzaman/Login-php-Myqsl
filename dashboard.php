@@ -1,6 +1,11 @@
 <?php 
 
-    session_start();
+session_start();
+if (isset($_POST["logout"])) {
+        session_unset();
+        session_destroy();
+        header("Location: index.php");
+    }
 
 ?>
 
@@ -12,15 +17,16 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>SELAMAT DATANG KEMBALI <?= $_SESSION['username']  ?>
-        
-    <?php 
-        // include "layout/header.html";
-        
-        include "layout/footer.html";
     
-    ?>
+        
+<?php  include "layout/header.html"; ?>
+<main>Selamat Datang! <?= $_SESSION['username'] ?> 
+<?php  include "layout/footer.html"; ?>
+    
+    <form action="dashboard.php" method="POST">
+        <button type="submit" name="logout">Logout</button>
+    </form>
 
-    </h1>
+    
 </body>
 </html>

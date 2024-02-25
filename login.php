@@ -5,6 +5,10 @@
 
     $login_message = "";
 
+    if (isset($_SESSION['is_login'])) {
+        header("Location: dashboard.php");
+    }
+
     if (isset($_POST['login'])) {
         $username = ($_POST['username']);
         $password = ($_POST['password']);
@@ -15,7 +19,7 @@
         if ($result->num_rows > 0) {
             $data = $result->fetch_assoc();
             $_SESSION['username'] = $data['username'];
-            $_SESSION['is_Login'] = true;
+            $_SESSION['is_login'] = true;
             // echo "Username " . $data['username']; 
             // echo "Password " . $data['password'];
             header ("Location:dashboard.php");
